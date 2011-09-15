@@ -11,10 +11,11 @@ module Single1Multi2Counter
     
     singles     = chars.find_all{|char| SINGLE_CHARS.include?(char)}.size
     hankakues   = chars.find_all{|char| HANKAKU_CHARS.include?(char)}.size
-    line_breaks = options[:ignore_line_breaks] ? chars.find_all{|char| LINE_BREAKES.include?(char)}.size : 0
+    line_breaks = chars.find_all{|char| LINE_BREAKES.include?(char)}.size
     multies     = (chars.size - singles - hankakues - line_breaks) * 2
     
-    singles + hankakues + multies
+    count_base = singles + hankakues + multies
+    options[:ignore_line_breaks] ? count_base : count_base + line_breaks
   end
 end
 

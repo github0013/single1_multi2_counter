@@ -24,4 +24,9 @@ describe "Single1Multi2Counter" do
   it "should not count line breaks" do
     "\r\n".count_as_s1m2.should == 0
   end
+  
+  it "should count line breaks" do
+    "\r\n".count_as_s1m2(:ignore_line_breaks => false).should == 2
+  end
+  
 end
